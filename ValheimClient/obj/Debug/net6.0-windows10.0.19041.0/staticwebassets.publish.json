@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HEalcO9dffoO0Fgw9oTHLBYgWgB77ET0GbQ/LoYnCrg=",
+  "Hash": "EWjVE6z/fo+N4QT+VoGPVWpERK0twjiMKnzyEZ9Pq7M=",
   "Source": "ValheimClient",
   "BasePath": "/",
   "Mode": "Root",
@@ -16,40 +16,6 @@
     }
   ],
   "Assets": [
-    {
-      "Identity": "D:\\Programming\\VSTS\\YourMamasHouse\\valheim-client\\ValheimClient\\obj\\Debug\\net6.0-windows10.0.19041.0\\win10-x64\\scopedcss\\bundle\\ValheimClient.styles.css",
-      "SourceId": "ValheimClient",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\Programming\\VSTS\\YourMamasHouse\\valheim-client\\ValheimClient\\obj\\Debug\\net6.0-windows10.0.19041.0\\win10-x64\\scopedcss\\bundle\\",
-      "BasePath": "/",
-      "RelativePath": "ValheimClient.styles.css",
-      "AssetKind": "All",
-      "AssetMode": "CurrentProject",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ApplicationBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\Programming\\VSTS\\YourMamasHouse\\valheim-client\\ValheimClient\\obj\\Debug\\net6.0-windows10.0.19041.0\\win10-x64\\scopedcss\\bundle\\ValheimClient.styles.css"
-    },
-    {
-      "Identity": "D:\\Programming\\VSTS\\YourMamasHouse\\valheim-client\\ValheimClient\\obj\\Debug\\net6.0-windows10.0.19041.0\\win10-x64\\scopedcss\\projectbundle\\ValheimClient.bundle.scp.css",
-      "SourceId": "ValheimClient",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\Programming\\VSTS\\YourMamasHouse\\valheim-client\\ValheimClient\\obj\\Debug\\net6.0-windows10.0.19041.0\\win10-x64\\scopedcss\\projectbundle\\",
-      "BasePath": "/",
-      "RelativePath": "ValheimClient.bundle.scp.css",
-      "AssetKind": "All",
-      "AssetMode": "Reference",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ProjectBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\Programming\\VSTS\\YourMamasHouse\\valheim-client\\ValheimClient\\obj\\Debug\\net6.0-windows10.0.19041.0\\win10-x64\\scopedcss\\projectbundle\\ValheimClient.bundle.scp.css"
-    },
     {
       "Identity": "D:\\Programming\\VSTS\\YourMamasHouse\\valheim-client\\ValheimClient\\wwwroot\\css\\app.css",
       "SourceId": "ValheimClient",
