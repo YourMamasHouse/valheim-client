@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/ValheimClient/bin/Debug/net6.0-windows10.0.19041.0/win10-x64
+/ValheimClient/obj/
+/.vs/ValheimClient/FileContentIndex/
