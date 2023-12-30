@@ -8,11 +8,11 @@ public partial class App : Application
     private const string WorldRemoteDB = "https://github.com/YourMamasHouse/nate-garrett-dylan-valheim-world/raw/main/Testing.db";
 	private const string WorldRemoteFwl = "https://github.com/YourMamasHouse/nate-garrett-dylan-valheim-world/raw/main/Testing.fwl";
 
-    private const string TempDirectoryIncoming = "C:/valheim-client-temp/incoming";
-	private const string TempDirectoryArchive = "C:/valheim-client-temp/archive";
-    private const string TempDirectoryOutgoing = "C:/valheim-client-temp/outgoing";
+    private const string TempDirectoryIncoming = "C:\\valheim-client-temp\\incoming";
+	private const string TempDirectoryArchive = "C:\\valheim-client-temp\\archive";
+    private const string TempDirectoryOutgoing = "C:\\valheim-client-temp\\outgoing";
 
-    private static string ValheimLocalWorldFolder = $"c:/Users/{Environment.UserName}/AppData/LocalLow/IronGate/Valheim/worlds_local";
+    private static string ValheimLocalWorldFolder = $"c:\\Users\\{Environment.UserName}\\AppData\\LocalLow\\IronGate\\Valheim\\worlds_local";
 
     public App()
 	{
@@ -39,16 +39,16 @@ public partial class App : Application
 
         Directory.CreateDirectory(TempDirectoryIncoming);
 
-        File.Copy($"{ValheimLocalWorldFolder}/Testing.db", $"{TempDirectoryArchive}/Testing.db");
-        File.Copy($"{ValheimLocalWorldFolder}/Testing.fwl", $"{TempDirectoryArchive}/Testing.fwl");
+        File.Copy($"{ValheimLocalWorldFolder}\\Testing.db", $"{TempDirectoryArchive}\\Testing.db");
+        File.Copy($"{ValheimLocalWorldFolder}\\Testing.fwl", $"{TempDirectoryArchive}\\Testing.fwl");
 
         // Download new files in temporary folder
 		using (HttpClient client = new HttpClient())
 		{
 			try
 			{
-                await client.DownloadFileTaskAsync(WorldRemoteDB, $"{TempDirectoryIncoming}/Testing.db");
-                await client.DownloadFileTaskAsync(WorldRemoteFwl, $"{TempDirectoryIncoming}/Testing.fwl");
+                await client.DownloadFileTaskAsync(WorldRemoteDB, $"{TempDirectoryIncoming}\\Testing.db");
+                await client.DownloadFileTaskAsync(WorldRemoteFwl, $"{TempDirectoryIncoming}\\Testing.fwl");
 			}
 			catch (Exception ex)
 			{
@@ -57,29 +57,23 @@ public partial class App : Application
 		}
 
         // Delete existing files
-        File.Delete($"{ValheimLocalWorldFolder}/Testing.db");
-        File.Delete($"{ValheimLocalWorldFolder}/Testing.fwl");
+        File.Delete($"{ValheimLocalWorldFolder}\\Testing.db");
+        File.Delete($"{ValheimLocalWorldFolder}\\Testing.fwl");
 
         // Move temporary files to local worlds server
-        File.Copy($"{TempDirectoryIncoming}/Testing.db", $"{ValheimLocalWorldFolder}/Testing.db");
-        File.Copy($"{TempDirectoryIncoming}/Testing.fwl", $"{ValheimLocalWorldFolder}/Testing.fwl");
+        File.Copy($"{TempDirectoryIncoming}\\Testing.db", $"{ValheimLocalWorldFolder}\\Testing.db");
+        File.Copy($"{TempDirectoryIncoming}\\Testing.fwl", $"{ValheimLocalWorldFolder}\\Testing.fwl");
 
         // Delete temporary directory files
-        File.Delete($"{TempDirectoryArchive}/Testing.db");
-        File.Delete($"{TempDirectoryArchive}/Testing.fwl");
+        File.Delete($"{TempDirectoryArchive}\\Testing.db");
+        File.Delete($"{TempDirectoryArchive}\\Testing.fwl");
 
-        File.Delete($"{TempDirectoryIncoming}/Testing.db");
-        File.Delete($"{TempDirectoryIncoming}/Testing.fwl");
+        File.Delete($"{TempDirectoryIncoming}\\Testing.db");
+        File.Delete($"{TempDirectoryIncoming}\\Testing.fwl");
     }
 
     public static void UpdateRemote()
     {
-        // Clean temp outgoing
-        if (Directory.Exists(TempDirectoryOutgoing))
-            Directory.Delete(TempDirectoryOutgoing, true);
-
-        Directory.CreateDirectory(TempDirectoryOutgoing);
-
         // Start process
         var process = new Process()
         {
@@ -96,6 +90,12 @@ public partial class App : Application
         var now = DateTime.Now;
         var branchName = $"{Environment.UserName}-upload-{now.Day}-{now.Month}-{now.Year}-{now.Hour}-{now.Minute}-{now.Second}";
 
+        // Clean temp outgoing
+        if (Directory.Exists(TempDirectoryOutgoing))
+            process.StandardInput.WriteLine($"rmdir /s /q {TempDirectoryOutgoing}");
+
+        Directory.CreateDirectory(TempDirectoryOutgoing);
+
         // Clone repository and checkout new branch
         process.StandardInput.WriteLine("git clone https://github.com/YourMamasHouse/nate-garrett-dylan-valheim-world.git");
         process.StandardInput.WriteLine("cd nate-garrett-dylan-valheim-world");
@@ -105,8 +105,8 @@ public partial class App : Application
         process.StandardInput.WriteLine("del Testing.db");
         process.StandardInput.WriteLine("del Testing.fwl");
 
-        process.StandardInput.WriteLine($"copy \"{ValheimLocalWorldFolder}/Testing.db\"");
-        process.StandardInput.WriteLine($"copy \"{ValheimLocalWorldFolder}/Testing.fwl\"");
+        process.StandardInput.WriteLine($"copy /Y {ValheimLocalWorldFolder}\\Testing.db");
+        process.StandardInput.WriteLine($"copy /Y {ValheimLocalWorldFolder}\\Testing.fwl");
 
         // Merge changes to main
         process.StandardInput.WriteLine("git add -A");
